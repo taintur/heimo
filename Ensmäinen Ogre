@@ -1,0 +1,21 @@
+Tässä on helpot stepit, joilla HelloOgre saadaan toimimaan.
+
+Lataa netistä Ogren sourcefilet v1.10.11 ja pura ne johonkin kansioon
+Sitten lisäksi on ladattava gcc ja cmake-gui
+
+Lue BuildingOgre.md, josta on ajettava komennot
+sudo apt-get install libgles2-mesa-dev libxt-dev libxaw7-dev
+sudo apt-get install nvidia-cg-toolkit libsdl2-dev doxygen
+
+cmake-guilla ensin configuroidaan ja sitten generoidaan. Generoituun kansioon
+siirrytään ja ajetaan 'cmake --build . --config release'
+Sen jälkeen asennetaan koko kirjasto:
+sudo make install
+
+On myös asennettava dependenssit freetype ja zzlib. Ne löytyvät Ogren rakennus-
+kansiosta. freetype on generoinut itselleen .so-tiedoston, joka täytyy siirtää
+kansioon /usr/local/lib/. zzlib saadaan helpoiten asennettua ajamalla komento
+'sudo apt-get install libzzip-dev'.
+
+Tämän jälkeen on tehtävä oheinen CMakeLists.txt -tiedosto, jonka jälkeen luodaan kansio
+build. build kansiossa ajetaan 'cmake ..' ja 'make', jonka jälkeen ohjelma on luotu.
